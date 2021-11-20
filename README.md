@@ -1,37 +1,42 @@
-## Welcome to GitHub Pages
+# Theme Toolkit
 
-You can use the [editor on GitHub](https://github.com/Fancrey/fancrey.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+This toolkit contains a simple theme template, a sample `.md` file for testing, and some HTML files for designers/developers to preview/debug css themes right inside their browser.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## How to use
 
-### Markdown
+Copy and rename your `.css` theme file as `html-preview/theme/test.css` and copy related resources, like images, fonts or imported css used by your css file into correspond folder. Then open `.html` files under folder `html-preview/html` by your browser to preview/debug your css theme.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## HTML files
 
-```markdown
-Syntax highlighted code block
+| File                               | Use |
+| :--------------------------------- | :-- |
+| `lorem.html`                       | Preview the basic typesetting.
+| `outline-open-and-focus-mode.html` | Preview pinned outline panel on Typora for macOS, and focus mode.
+| `source-mode.html`                 | Preview source code mode syntax highlighting style.
+| `ui-controls.html`                 | Preview some control UIs on macOS, Windows, and Linux and window frame for "unibody"  style on Windows.
+| `ui-controls2.html`                | Preview tips/notifications in Typora and the side panel style on Windows/Linux.
+| `unibody.html`                     | Preview the menu style for "unibody"  style on Windows.
 
-# Header 1
-## Header 2
-### Header 3
+So you may find components you never seen in Typora because they may only be available for specific OS platform. If you want to submit your Typora theme to [Typora Theme Gallery](http://theme.typora.io), and share with other users, we strongly recommend you to go through all those HTML files to make your theme looks great on all platform.
 
-- Bulleted
-- List
+## Notice
 
-1. Numbered
-2. List
+- This toolkit is created for Typora >= 0.9.9.7.8 (macOS) or Typora >= 0.9.19 (Windows/Linux). Update your Typora to latest version, and update this toolkit to latest version by `git pull` or other commands.
+- **Do not edit/format HTML files**, even though they are ugly and unreadable, currently the final rendered output is whitespace sensitive.
+- Better to use Chrome or Safari. (in macOS, typora uses Safari as web engine, in Windows/Linux typora uses Chrome, but their rendering results are almost the same).
+- If you meet error like `[Not allowed to load local resource: file://XXXX]` in browser's console, the quickest solution for me is to use tools like [httpster](https://github.com/SimbCo/httpster) or [CodeKit](https://incident57.com/codekit/) to host the web content into localhost.
 
-**Bold** and _Italic_ and `Code` text
+## Documentations
 
-[Link](url) and ![Image](src)
-```
+[How to write a Typora theme](http://theme.typora.io/doc/Write-Custom-Theme/)
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+[Typora Theme Gallery](http://theme.typora.io)
 
-### Jekyll Themes
+[Some Tips on Typora Styling](http://support.typora.io/style)
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Fancrey/fancrey.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## Issues && Contact
 
-### Support or Contact
+If you find bugs, or issues, or require some `class` for rendered HTML Dom in typora, please:
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+- Put it into <https://github.com/typora/typora-issues/issues>
+- Contact us via <hi@typora.io>
