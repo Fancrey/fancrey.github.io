@@ -1,0 +1,758 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>“有论据有结论”质疑概述与例题分析</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="26bccc1b-4d07-46bd-8939-50241e2b93a6" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/met_william_turner_1835.jpg" style="object-position:center 60%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="https://www.notion.so/icons/die3_orange.svg"/></div><h1 class="page-title">“有论据有结论”质疑概述与例题分析</h1><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>标签</th><td><span class="selected-value select-value-color-red">一般质疑</span><span class="selected-value select-value-color-yellow">论证类</span></td></tr><tr class="property-row property-row-date"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesDate"><path d="M3.29688 14.4561H12.7031C14.1797 14.4561 14.9453 13.6904 14.9453 12.2344V3.91504C14.9453 2.45215 14.1797 1.69336 12.7031 1.69336H3.29688C1.82031 1.69336 1.05469 2.45215 1.05469 3.91504V12.2344C1.05469 13.6973 1.82031 14.4561 3.29688 14.4561ZM3.27637 13.1162C2.70898 13.1162 2.39453 12.8154 2.39453 12.2207V5.9043C2.39453 5.30273 2.70898 5.00879 3.27637 5.00879H12.71C13.2842 5.00879 13.6055 5.30273 13.6055 5.9043V12.2207C13.6055 12.8154 13.2842 13.1162 12.71 13.1162H3.27637ZM6.68066 7.38086H7.08398C7.33008 7.38086 7.41211 7.30566 7.41211 7.05957V6.66309C7.41211 6.41699 7.33008 6.3418 7.08398 6.3418H6.68066C6.44141 6.3418 6.35938 6.41699 6.35938 6.66309V7.05957C6.35938 7.30566 6.44141 7.38086 6.68066 7.38086ZM8.92285 7.38086H9.31934C9.56543 7.38086 9.64746 7.30566 9.64746 7.05957V6.66309C9.64746 6.41699 9.56543 6.3418 9.31934 6.3418H8.92285C8.67676 6.3418 8.59473 6.41699 8.59473 6.66309V7.05957C8.59473 7.30566 8.67676 7.38086 8.92285 7.38086ZM11.1582 7.38086H11.5547C11.8008 7.38086 11.8828 7.30566 11.8828 7.05957V6.66309C11.8828 6.41699 11.8008 6.3418 11.5547 6.3418H11.1582C10.9121 6.3418 10.8301 6.41699 10.8301 6.66309V7.05957C10.8301 7.30566 10.9121 7.38086 11.1582 7.38086ZM4.44531 9.58203H4.84863C5.09473 9.58203 5.17676 9.50684 5.17676 9.26074V8.86426C5.17676 8.61816 5.09473 8.54297 4.84863 8.54297H4.44531C4.20605 8.54297 4.12402 8.61816 4.12402 8.86426V9.26074C4.12402 9.50684 4.20605 9.58203 4.44531 9.58203ZM6.68066 9.58203H7.08398C7.33008 9.58203 7.41211 9.50684 7.41211 9.26074V8.86426C7.41211 8.61816 7.33008 8.54297 7.08398 8.54297H6.68066C6.44141 8.54297 6.35938 8.61816 6.35938 8.86426V9.26074C6.35938 9.50684 6.44141 9.58203 6.68066 9.58203ZM8.92285 9.58203H9.31934C9.56543 9.58203 9.64746 9.50684 9.64746 9.26074V8.86426C9.64746 8.61816 9.56543 8.54297 9.31934 8.54297H8.92285C8.67676 8.54297 8.59473 8.61816 8.59473 8.86426V9.26074C8.59473 9.50684 8.67676 9.58203 8.92285 9.58203ZM11.1582 9.58203H11.5547C11.8008 9.58203 11.8828 9.50684 11.8828 9.26074V8.86426C11.8828 8.61816 11.8008 8.54297 11.5547 8.54297H11.1582C10.9121 8.54297 10.8301 8.61816 10.8301 8.86426V9.26074C10.8301 9.50684 10.9121 9.58203 11.1582 9.58203ZM4.44531 11.7832H4.84863C5.09473 11.7832 5.17676 11.708 5.17676 11.4619V11.0654C5.17676 10.8193 5.09473 10.7441 4.84863 10.7441H4.44531C4.20605 10.7441 4.12402 10.8193 4.12402 11.0654V11.4619C4.12402 11.708 4.20605 11.7832 4.44531 11.7832ZM6.68066 11.7832H7.08398C7.33008 11.7832 7.41211 11.708 7.41211 11.4619V11.0654C7.41211 10.8193 7.33008 10.7441 7.08398 10.7441H6.68066C6.44141 10.7441 6.35938 10.8193 6.35938 11.0654V11.4619C6.35938 11.708 6.44141 11.7832 6.68066 11.7832ZM8.92285 11.7832H9.31934C9.56543 11.7832 9.64746 11.708 9.64746 11.4619V11.0654C9.64746 10.8193 9.56543 10.7441 9.31934 10.7441H8.92285C8.67676 10.7441 8.59473 10.8193 8.59473 11.0654V11.4619C8.59473 11.708 8.67676 11.7832 8.92285 11.7832Z"></path></svg></span>日期</th><td><time>@October 27, 2022</time></td></tr><tr class="property-row property-row-status"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesStatus"><path d="M8.75488 1.02344C8.75488 0.613281 8.41309 0.264648 8.00293 0.264648C7.59277 0.264648 7.25098 0.613281 7.25098 1.02344V3.11523C7.25098 3.51855 7.59277 3.86719 8.00293 3.86719C8.41309 3.86719 8.75488 3.51855 8.75488 3.11523V1.02344ZM3.91504 5.0293C4.20215 5.31641 4.69434 5.32324 4.97461 5.03613C5.26855 4.74902 5.26855 4.25684 4.98145 3.96973L3.53906 2.52051C3.25195 2.2334 2.7666 2.21973 2.47949 2.50684C2.19238 2.79395 2.18555 3.28613 2.47266 3.57324L3.91504 5.0293ZM10.9629 4.01758C10.6826 4.30469 10.6826 4.79688 10.9697 5.08398C11.2568 5.37109 11.749 5.36426 12.0361 5.07715L13.4854 3.62793C13.7725 3.34082 13.7725 2.84863 13.4785 2.55469C13.1982 2.27441 12.7061 2.27441 12.4189 2.56152L10.9629 4.01758ZM15.0234 8.78906C15.4336 8.78906 15.7822 8.44727 15.7822 8.03711C15.7822 7.62695 15.4336 7.28516 15.0234 7.28516H12.9385C12.5283 7.28516 12.1797 7.62695 12.1797 8.03711C12.1797 8.44727 12.5283 8.78906 12.9385 8.78906H15.0234ZM0.975586 7.28516C0.56543 7.28516 0.223633 7.62695 0.223633 8.03711C0.223633 8.44727 0.56543 8.78906 0.975586 8.78906H3.07422C3.48438 8.78906 3.83301 8.44727 3.83301 8.03711C3.83301 7.62695 3.48438 7.28516 3.07422 7.28516H0.975586ZM12.0361 10.9902C11.749 10.71 11.2568 10.71 10.9629 10.9971C10.6826 11.2842 10.6826 11.7764 10.9697 12.0635L12.4258 13.5127C12.7129 13.7998 13.2051 13.793 13.4922 13.5059C13.7793 13.2256 13.7725 12.7266 13.4854 12.4395L12.0361 10.9902ZM2.52051 12.4395C2.22656 12.7266 2.22656 13.2188 2.50684 13.5059C2.79395 13.793 3.28613 13.7998 3.57324 13.5127L5.02246 12.0703C5.31641 11.7832 5.31641 11.291 5.03613 11.0039C4.74902 10.7168 4.25684 10.71 3.96973 10.9971L2.52051 12.4395ZM8.75488 12.9658C8.75488 12.5557 8.41309 12.207 8.00293 12.207C7.59277 12.207 7.25098 12.5557 7.25098 12.9658V15.0576C7.25098 15.4609 7.59277 15.8096 8.00293 15.8096C8.41309 15.8096 8.75488 15.4609 8.75488 15.0576V12.9658Z"></path></svg></span>状态</th><td><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Done</span></td></tr></tbody></table></header><div class="page-body"><nav id="75bcbc16-ad54-4e05-a754-ed3db6833348" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0980d6d3-d8c7-4d1a-b942-670ef9bd8e22">2.3 “有论据有结论”质疑概述与例题分析</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3839dc72-2527-4142-9c88-68c60d53490b">常见形式</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34c72d14-a347-4830-b456-39a09d0b6215">质疑方式</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3cbd9e3d-3e05-417e-9c57-652efa8a406c">质疑论据</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#dfbc1665-40ec-4b5c-a395-03f3846dfd93">例题3(2019四川65%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c2f623d1-e70b-4129-a056-1a12f573c6a7">错：例题4 (2016山东53%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2e10da25-cc56-455a-b54e-e07eacee1325">质疑论证</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9cc5b9cc-f203-4b6c-87ee-1ff03df19fdd">例题5 (2021浙江76%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#14c0e7d0-1ff5-45a5-aa75-57840dbc0851">例题6 (2018浙江96%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#28919b5b-65dd-45a1-9f8f-90d0e8fdb00e">例题7(2020联考54%)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9523e839-e662-4ea6-8d0b-53ceacd1859e">常用方法</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#83455c41-b1e3-4d01-a47d-f9e51a9eac8e">错：例题8 (2020下四川50%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#837f62f9-c5ae-4e40-a6d1-0234f4d7ed40">例题9(2013浙江75%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#743b06b5-7820-404f-9ed8-cd25592f4842">例题10 (2019江苏61%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a67616b6-0b53-451f-8454-dbdb3ffced11">不会：例题11 (2021广东选调49%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#efb3af88-cf47-4093-8838-2be07913c649">例题12 (2020浙江事业编50%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#32c67772-71f0-4251-a81e-469939052407">错题：例题13(2021北京35%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#890a8dfb-ad78-4feb-b9af-c1e2d78c7cb9">别想太多：例题14 (2013深圳30%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4415e381-855d-4bd9-a64b-99b2dff153f9">例题15(2015国考38%)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7f8dfeb1-8fe1-41eb-aae5-623a2799439a">强弱说明</a></div></nav><h1 id="0980d6d3-d8c7-4d1a-b942-670ef9bd8e22" class="">2.3 “有论据有结论”质疑概述与例题分析</h1><h2 id="3839dc72-2527-4142-9c88-68c60d53490b" class="">常见形式</h2><p id="28e4e5e2-edcd-4bb5-bd2f-2dd12a0dea38" class="">由大段论据和结论组成,少数为结论在首句;结论常用“有专家/媒体等据此认为”、“所以/因此/可见”等引出。</p><h2 id="34c72d14-a347-4830-b456-39a09d0b6215" class="">质疑方式</h2><p id="28139828-e6df-44a7-86aa-0c4f27d6dafd" class="">虽然题目由论据和结论组成,但绝大多数题目都是针对二者之间隐含的论证过程进行质疑,在肯定论据的前提下,得出相反或得不出结论,底层逻辑为“<code>A→B</code>&quot;与&quot;<code>A且非B</code>”矛盾。
+极少数论据本身有误的可以质疑论据,一般没有只针对结论进行质疑的题目。</p><p id="9df927fa-3687-4358-82a7-957ebfbb61d6" class=""><code>无论据，只有结论</code>   <code>有理由的反驳结论！</code>
+<code>有论据，有结论</code>   <code><strong>在肯定论据的基础上得出相反结论或者得不出结论</strong></code><strong>
+</strong><strong><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>→</mo><mi>B</mi><mtext>但是</mtext><mi>A</mi><mi mathvariant="normal">&amp;</mi><mi mathvariant="normal">¬</mi><mi>B</mi><mo separator="true">,</mo><mtext>可以质疑</mtext></mrow><annotation encoding="application/x-tex">A\rightarrow B但是A\&amp; \neg B,可以质疑</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord cjk_fallback">但是</span><span class="mord mathnormal">A</span><span class="mord">&amp;¬</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">可以质疑</span></span></span></span></span><span>﻿</span></span></strong></p><h3 id="3cbd9e3d-3e05-417e-9c57-652efa8a406c" class="">质疑论据</h3><p id="4e20623f-eaf2-4b14-8a76-9f2f20f305b4" class="">想让推理过程严谨,论据应正确、充分,在<code>论据本身有误</code>的情况下,才可质疑论据(此类质疑极少)
+例如:普通身高的飞扬100斤、龙飞90斤、花生80斤,可见,四海男老师身材都很瘦弱。</p><h3 id="dfbc1665-40ec-4b5c-a395-03f3846dfd93" class="">例题3(2019四川65%)</h3><p id="d950d1c6-b2d0-487d-9069-6151093ca090" class="">有人认为一个人的年龄越大,体内积累的自由基会越多,氧化造成的伤害就越多,最后就会衰老死亡。葡萄籽提取物中含有的原花青素能有效清除体内自由基,保护人体细胞组织免受自由基的氧化损伤。因此,多吃葡萄籽提取物可以抗氧化防衰老。
+以下哪项论述如果为真,最能削弱上述论证:
+A.葡萄籽提取物中含有的多盼类物质易对肝脏造成损害
+B.各种蔬菜水果等日常食物中,含有的抗氧化物质也比较多
+<code>C</code>.年轻人、中年人和老年人体内的自由基浓度没有什么区别 <code>质疑论据，不是越老自由基越多</code>
+D.体内的歧化酶结合一部分自由基,会减轻其氧化造成的伤</p><blockquote id="51dd060e-c737-4aa2-bfbf-51535af2fdad" class="">论据：自由基越老越多越有伤害 &amp; 葡萄籽提取物可以清除自由基
+结论：多吃葡萄籽可以抗衰老</blockquote><h3 id="c2f623d1-e70b-4129-a056-1a12f573c6a7" class="">错：例题4 (2016山东53%)</h3><p id="81c037f6-14ca-4bb8-a75c-3c047b3ac533" class="">联系例题：<a href="%E5%AF%B9%E6%AF%94%E5%AE%9E%E9%AA%8C%E5%BD%92%E5%9B%A0%E8%B4%A8%E7%96%91%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90%20952a9bda287640ac9c991773e4e2989e.html">⭐例题20 (2020广东县级卷30%)</a> 
+澳大利亚研究人员称,按树在吸收水分的同时,会将水中微量的金元素吸收进树体。通过分析按树落叶中金的含量,可指示金矿的位置,不用钻探就能了解地表以下是否有矿藏。因此按树探矿法对矿产勘探具有重要意义。
+以下哪项如果为真,最能削弱上述结论:
+<code>A</code>.金矿一般都埋藏于砂石层之下,普通土壤层在砂石层上面,植物的根生长在土壤层 <code>质疑论据，说明树根根本就长不到金矿层，从根本上否定</code>
+<del>B</del>.澳洲西南部的新南威尔士州富含金矿,当地的按树叶中含金量与其他地区并无显著差异 <code>这是个例</code>
+C.按树探矿法的实施周期较长,需要等待按树成材之后才能有效
+D.澳州西南部有大片的按树林,澳洲最早发现的金矿也在那里</p><blockquote id="f80b6219-b479-4020-8a2c-d0b0b64f6859" class="">论据：桉树能吸收金元素，通过树叶金含量指示金矿
+结论：桉树探矿法有意义 </blockquote><h3 id="2e10da25-cc56-455a-b54e-e07eacee1325" class="">质疑论证</h3><p id="cfcec17e-4d5f-4a87-9e14-191e5415cd04" class="">绝大多数质疑题,均是在论证过程中存在问题,存在的问题(即逻辑漏洞)有论证方式有误、存在断点、范围不一致等,需具体问题具体分析。
+例如:狗不能吃巧克力,所以人也不能吃巧克力；你一天没理我,所以你不爱我；小王行测很好,所以一定上岸!</p><h3 id="9cc5b9cc-f203-4b6c-87ee-1ff03df19fdd" class="">例题5 (2021浙江76%)</h3><p id="bd134330-f57a-40a0-8233-31c98a0182a0" class="">2020年的冬天似乎比往年更早到来。还没进入11月份,我国部分地区就出现了第一场降雪和气温降至零度以下的情况。有专家据此表示,2020年的冬天将成为我国60年来最冷的一个冬天。
+以下哪项如果为真,最能削弱上述论述:
+A.我国其他一些地区的气温并未出现较往年明显下降的迹象
+B.11月前出现大雪天气的地区往年几乎没有出现过类似现象
+C.在全球变暖的情况下,近年来我国冬季平均气温呈上升趋
+<code>D</code>.据统计,第一场降雪的时间与整个冬天的平均气温无明显相关</p><blockquote id="f9fc88ff-8bf6-4aff-b5b1-7079035bf014" class="">论据：我过今年第一场降雪很早
+结论：我国今年一定最冷</blockquote><h3 id="14c0e7d0-1ff5-45a5-aa75-57840dbc0851" class="">例题6 (2018浙江96%)</h3><p id="0f56510c-df29-479b-ba68-fff2d7915353" class="">某电视综艺节目播出后,节目导演声称该节目达到了当前同类节目的最高水准,因为该节目收视率比同类节目高2%。
+以下哪项如果为真,最能削弱上述论证:
+A.参与该节目的嘉宾对节目评价不一
+B.观众本身就非常喜欢看电视综艺节目
+C.该导演的微博有几十万条批评此节目的评论
+<code>D</code>.节目的水准和收视率并无必然关联</p><h3 id="28919b5b-65dd-45a1-9f8f-90d0e8fdb00e" class="">例题7(2020联考54%)</h3><p id="a1009fe5-a024-45b8-9748-2c9569a5eb04" class="">二氧化碳的排放量剧增导致全球气候变暖,使珠穆朗玛峰所在的喜马拉雅地区冰川正面临急剧缩小的危险。研究显示,珠峰海拔在5000米到6000米的冰川集中区域出现冰川快速融化的现象,这些地方将只在冬季而不是在温暖的季节时看到结冰。专家推论说,根据未来的气候变化趋势,喜马拉雅地区的冰川减少的速度还有可能加快,如果本世纪内气温如预测的样<code>继续升高</code>,该<code>地区</code>的冰川最终将<code>消失殆尽</code>。
+如果以下各项为真,最能削弱上述论证的是:
+A.喜马拉雅山冰川面积每年缩小约0.1%到0.6%
+<code>B</code>.喜马拉雅山其他地方的冰川对气温变化不敏感
+C.过去50年珠峰周边冰川覆盖面积减少了33.3%
+D.珠峰海拔7000米以上的冰川没有快速融化迹象</p><blockquote id="3908a3fd-86de-493d-b20d-399621283c02" class="">论据：珠穆朗玛峰5000-6000米冰化了
+结论：喜马拉雅山地区冰川最终会消失
+范围不对</blockquote><h2 id="9523e839-e662-4ea6-8d0b-53ceacd1859e" class="">常用方法</h2><p id="00e26cc8-6405-4a1b-ac7a-c275049b99f7" class=""><mark class="highlight-red"><strong>虽然“论据”,但是“选项”,所以“得不出结论”或“结论错误” </strong></mark>:一定注意“虽然”、“但是”之间的逻辑性。适用于一般质疑。</p><h3 id="83455c41-b1e3-4d01-a47d-f9e51a9eac8e" class="">错：例题8 (2020下四川50%)</h3><p id="abeda177-903f-460f-b3c1-9152e0088c00" class="">动物药理实验表明,白蔡芦醇具有明显的软化血管作用,可以抗血栓,对冠心病、高血脂有防治作用。而葡萄生长过程中,为防止灰色霉菌感染导致葡萄腐烂,会产生白蔡芦醇。在葡萄酒发酵生产过程中,由于葡萄汁酶的作用,<code>酒中白蔡芦醇</code>的数量明显增加。因此,<code>葡萄酒具有保健功效</code>。
+以下哪项如果为真,最能质疑上述论证:
+A.白蔡芦醇想要发挥软化血管的作用,理论上需要连续两个月每天喝1斤葡萄酒
+<code>B</code>.乙醇是一级致癌物,任何酒精饮料不论是否真有诸如软化血管之类的养生作用,最后都会明显降低饮用者的预期寿命
+C.偏爱奶酪、芝士、黄油等高脂肪食物的法国人,因常饮富含白蔡芦醇的葡萄酒,其冠心病发病率却低于其他西方国家
+D.即使在动物实验中能确定白蔡芦醇物质对动物有用,要证实白蔡芦醇对人体健康的作用和安全性还必须进行大规模的人体试验</p><blockquote id="3126a458-56d2-477c-9cf9-cfc3aaccbc19" class="">论据：白藜芦醇有益健康
+结论：葡萄酒有保健功效</blockquote><h3 id="837f62f9-c5ae-4e40-a6d1-0234f4d7ed40" class="">例题9(2013浙江75%)</h3><p id="35a61faa-79fc-41eb-9380-57b1f760a60d" class="">耐甲氧西林金黄色葡萄球菌(MRSA)、克雷伯氏菌等细菌能引起多种疾病和感染。同时各种抗生素往往又对它们无可奈何,这些令人色变的细菌因而被称为超级细菌。近年来,研究人员通过微生物的全基因组测序技术不仅能追踪的源头,而且能追踪到其他耐药细菌的源头。因此,全基因组测序技术可以解决MRSA等超级细菌给人类带来的疾病困扰。
+下列哪项为真,最能削弱上述论证:
+A.超级细菌会随着环境的变化而变异
+B.进行全基因组测序的费用比较高
+C.全基因组技术可为寻找抑制超级细菌的药物提供线索
+<code>D</code>.全基因组测序技术无法杀灭超级细菌</p><blockquote id="11d56aeb-614d-4312-a65a-6d73007a747a" class="">论据：全基因组测序技术能追踪到源头
+结论：该技术可以解决超级细菌带来的疾病困扰</blockquote><h3 id="743b06b5-7820-404f-9ed8-cd25592f4842" class="">例题10 (2019江苏61%)</h3><p id="87e5c9f4-034f-455b-a974-d44d98b149d5" class="">食品安全已成为现代社会关注的热点问题。今年针对某市的一项社会调查显示,29.2%的受访者在吃的方面有安全感,23.8%的受访者没有安全感,而去年相应的调查数据分别是22.4%和32.6%。调查人员由此断言今年该市公众对食品的安全感有所提高,食品安全的总体状况好于上年。
+以下哪项如果为真,最能质疑上述调查结论:
+A.今年有些受访者没有表达自己对食品安全的态度 <code>有些看成一个，看看有没有力度</code>
+B.今年该市政府加大了对食品安全工作的管理力度
+C.该市媒体今年报道了多起假奶粉等食品安全事件
+<code>D</code>.今年的社会调查中增加了不少餐饮经营者的样本 <code>投票的调查结果就不客观了，盐水问题</code></p><blockquote id="f20427f9-636b-47bf-9af1-f58de88eb6d5" class="">论据：调查结果的有安全感的人多了，没有安全感的人少了
+结论：食品安全状况好于上年
+🤣在火车问，今年买票难吗</blockquote><h3 id="a67616b6-0b53-451f-8454-dbdb3ffced11" class="">不会：例题11 (2021广东选调49%)</h3><p id="cae2b3c8-453e-4a62-bb60-6817aa272bc5" class="">2020年上半年,某国政府声称,“今年上半年,本国GDP增长率超过了全球70%的国家。由此可见,今年上半年政府的施政纲领是正确的。
+下列选项如果为真,最能有力地削弱以上论断的是:
+A.该国政府不重视疫情防控,使该国成为全球疫情最严重的国家之一
+<code>B</code>.去年同期,该国GDP增长率位于全球前十
+C.该国的GDP低于三分之二的国家
+D.该国政府的施政纲领连续几年并未发生变化</p><blockquote id="5f290cf4-bcca-4fb7-8894-5cd1c47a4447" class="">论据：今年GDP增长率超过了70%的国家
+结论：施政纲领正确
+去年都全球前十了，今年很🌶️🐔！</blockquote><h3 id="efb3af88-cf47-4093-8838-2be07913c649" class="">例题12 (2020浙江事业编50%)</h3><p id="3d33a8dd-0021-4d86-abe9-ff9174e42dea" class="">杭州和武汉有很多相似之处。例如,都在长江流域,都在北纬30度附近,夏天都很炎热。因为武汉有樱花,所以杭州也有樱花。
+以下哪项如果为真,最能削弱上述结论:
+A.杭州的市花是桂花
+B.樱花能在全国各地种植 <code>妈耶，变支持了</code>
+C.杭州和武汉的降雨量不同 <code>质疑类比，类比不成立</code>
+D.武汉大学以樱花盛开而闻名</p><blockquote id="d38691a9-a657-4c18-80ba-7be2263031ae" class="">属于类比推理，很不靠谱
+论据：杭州和武汉有很多共同点 &amp; 武汉有樱花
+结论：杭州也有樱花</blockquote><h3 id="32c67772-71f0-4251-a81e-469939052407" class="">错题：例题13(2021北京35%)</h3><p id="acf4ed74-df06-4c0f-8715-d9de71b3b35b" class="">为什么青少年会更“热血”,更冲动更容易冒险,有研究显示,这跟青少年大脑前额叶皮层的功能有关。前额叶皮层具有负责调控注意力、作出计划、理性思考、调控情绪的能力,这部分皮层一般要等到25岁左右才能发育完全。因此,25岁之前谈理智是没有意义的。
+以下各项如果为真,哪项最能质疑上述结论:
+A.青少年时期的大脑中多巴胺的分泌很旺盛,使得青少年更喜欢新鲜刺激的游戏 <code>无关项</code>
+B.婴幼儿时期大脑发育相对青少年时期更加幼稚和不成熟,但也能逐渐学会控制大小便 <code>和热血无关</code>
+C.大脑有“用进废退”的现象,青少年大脑前额叶皮层可通过不断训练而促进其成熟 <code>可以在25岁之前谈理智</code>
+<code>D</code>.很多中年人也经常有冲动冒险、情绪失控的行为,前额叶皮层发育完全也并不意味着就一定很理智 <code>主体不一致</code></p><blockquote id="7f1227f1-d11a-45a0-a2f7-232415943b2e" class="">论据：控制理解的前额叶皮层要到25岁才能成熟
+结论：25岁之前谈理智没有意义</blockquote><h3 id="890a8dfb-ad78-4feb-b9af-c1e2d78c7cb9" class="">别想太多：例题14 (2013深圳30%)</h3><p id="1c418ce5-60b2-4c14-9463-1dc0e7b48d54" class="">像“无息贷款”、“重金求子”“办证”等手段拙劣的街头诈骗广告,即使早已被曝光也仍然屡见不鲜。骗子们宁愿继续使用这些已被大多数人识破的广告内容,也不去研究一些更具欺骗性、隐蔽性的诈骗广告内容,这只能说骗子太愚蠢,太没有“专业精神”了。
+以下陈述如果为真,最能够反驳上述结论的一项是:
+A.骗子肯定不是愚蠢的,愚蠢的人是不能做骗子的。
+B.如果一种行骗方式不能骗到任何人,那么骗子肯定不会使用 <code>能骗到人，推不出骗子不蠢</code>
+<code>C</code>.骗子使用这种拙劣的行骗手段,是因为他们一开始就不打算骗聪明人。
+D.骗子行骗时会费尽心思以不引起社会关注。</p><blockquote id="0f94fa81-4309-4968-b3ba-608be0f726e6" class="">论据：行骗手段很拙劣
+结论：骗子太愚蠢 </blockquote><h3 id="4415e381-855d-4bd9-a64b-99b2dff153f9" class="">例题15(2015国考38%)</h3><p id="f9e8b0ea-3e71-45a0-bbd9-80d1ecdd4abe" class="">某国际小组对从已灭绝的一种恐鸟骨船化石中提取的DNA进行遗传物质衰变速率分析发现,虽然短DNA片段可能存在100万年,但30个或者更多碱基对序列在确定条件下的半衰期只有大约15.8万年。某位科学家据此认为,利用古代DNA再造恐龙等类似于电影《朱罗纪公园》中的故事不可能发生。
+以下哪项如果为真,最能反驳该科学家的观点:
+A. 《株罗纪公园》虽然是一部科幻电影,但也要有事实依据
+B.上述研究的化石样本可能受到人类DNA的“污染”
+<code>C</code>.环境因素会影响DNA等遗传物质的衰变速率
+D.恐鸟与恐龙的碱基对序列排列顺序不同</p><blockquote id="d6556e8e-db6e-424f-9f79-64fac38e691e" class="">论据：恐鸟碱基对序列半衰期太短
+结论：用DNA再造恐龙不可能了</blockquote><h2 id="7f8dfeb1-8fe1-41eb-aae5-623a2799439a" class="">强弱说明</h2><p id="8a9b4d1b-f94a-406a-a3d1-198ca22da3e4" class="">无论是针对论据,还是论证方式,或指出结论的不合理性,其质疑都是针对整个论证过程,都是想有理由的得出相反结论或说明得不出该结论,殊途同归,一般无力度强弱之分:整体来说,针对推理过程漏洞的质疑最为有效,应就题论题,而非一概而论。</p><p id="eda4eace-89c9-417b-87c8-6fef9658a530" class="">
+</p><p id="e0aacc53-094d-42b7-8de3-c3b069eefecc" class="">
+</p></div></article></body></html>

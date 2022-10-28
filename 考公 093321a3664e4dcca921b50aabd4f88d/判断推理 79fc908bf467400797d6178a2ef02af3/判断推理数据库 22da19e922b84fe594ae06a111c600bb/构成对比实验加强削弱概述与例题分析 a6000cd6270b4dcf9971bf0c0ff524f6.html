@@ -1,0 +1,709 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>构成对比实验加强削弱概述与例题分析</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="a6000cd6-270b-4dcf-9971-bf0c0ff524f6" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://www.notion.so/icons/die5_green.svg"/></div><h1 class="page-title">构成对比实验加强削弱概述与例题分析</h1><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>标签</th><td><span class="selected-value select-value-color-purple">归因论证</span><span class="selected-value select-value-color-yellow">论证类</span></td></tr><tr class="property-row property-row-date"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesDate"><path d="M3.29688 14.4561H12.7031C14.1797 14.4561 14.9453 13.6904 14.9453 12.2344V3.91504C14.9453 2.45215 14.1797 1.69336 12.7031 1.69336H3.29688C1.82031 1.69336 1.05469 2.45215 1.05469 3.91504V12.2344C1.05469 13.6973 1.82031 14.4561 3.29688 14.4561ZM3.27637 13.1162C2.70898 13.1162 2.39453 12.8154 2.39453 12.2207V5.9043C2.39453 5.30273 2.70898 5.00879 3.27637 5.00879H12.71C13.2842 5.00879 13.6055 5.30273 13.6055 5.9043V12.2207C13.6055 12.8154 13.2842 13.1162 12.71 13.1162H3.27637ZM6.68066 7.38086H7.08398C7.33008 7.38086 7.41211 7.30566 7.41211 7.05957V6.66309C7.41211 6.41699 7.33008 6.3418 7.08398 6.3418H6.68066C6.44141 6.3418 6.35938 6.41699 6.35938 6.66309V7.05957C6.35938 7.30566 6.44141 7.38086 6.68066 7.38086ZM8.92285 7.38086H9.31934C9.56543 7.38086 9.64746 7.30566 9.64746 7.05957V6.66309C9.64746 6.41699 9.56543 6.3418 9.31934 6.3418H8.92285C8.67676 6.3418 8.59473 6.41699 8.59473 6.66309V7.05957C8.59473 7.30566 8.67676 7.38086 8.92285 7.38086ZM11.1582 7.38086H11.5547C11.8008 7.38086 11.8828 7.30566 11.8828 7.05957V6.66309C11.8828 6.41699 11.8008 6.3418 11.5547 6.3418H11.1582C10.9121 6.3418 10.8301 6.41699 10.8301 6.66309V7.05957C10.8301 7.30566 10.9121 7.38086 11.1582 7.38086ZM4.44531 9.58203H4.84863C5.09473 9.58203 5.17676 9.50684 5.17676 9.26074V8.86426C5.17676 8.61816 5.09473 8.54297 4.84863 8.54297H4.44531C4.20605 8.54297 4.12402 8.61816 4.12402 8.86426V9.26074C4.12402 9.50684 4.20605 9.58203 4.44531 9.58203ZM6.68066 9.58203H7.08398C7.33008 9.58203 7.41211 9.50684 7.41211 9.26074V8.86426C7.41211 8.61816 7.33008 8.54297 7.08398 8.54297H6.68066C6.44141 8.54297 6.35938 8.61816 6.35938 8.86426V9.26074C6.35938 9.50684 6.44141 9.58203 6.68066 9.58203ZM8.92285 9.58203H9.31934C9.56543 9.58203 9.64746 9.50684 9.64746 9.26074V8.86426C9.64746 8.61816 9.56543 8.54297 9.31934 8.54297H8.92285C8.67676 8.54297 8.59473 8.61816 8.59473 8.86426V9.26074C8.59473 9.50684 8.67676 9.58203 8.92285 9.58203ZM11.1582 9.58203H11.5547C11.8008 9.58203 11.8828 9.50684 11.8828 9.26074V8.86426C11.8828 8.61816 11.8008 8.54297 11.5547 8.54297H11.1582C10.9121 8.54297 10.8301 8.61816 10.8301 8.86426V9.26074C10.8301 9.50684 10.9121 9.58203 11.1582 9.58203ZM4.44531 11.7832H4.84863C5.09473 11.7832 5.17676 11.708 5.17676 11.4619V11.0654C5.17676 10.8193 5.09473 10.7441 4.84863 10.7441H4.44531C4.20605 10.7441 4.12402 10.8193 4.12402 11.0654V11.4619C4.12402 11.708 4.20605 11.7832 4.44531 11.7832ZM6.68066 11.7832H7.08398C7.33008 11.7832 7.41211 11.708 7.41211 11.4619V11.0654C7.41211 10.8193 7.33008 10.7441 7.08398 10.7441H6.68066C6.44141 10.7441 6.35938 10.8193 6.35938 11.0654V11.4619C6.35938 11.708 6.44141 11.7832 6.68066 11.7832ZM8.92285 11.7832H9.31934C9.56543 11.7832 9.64746 11.708 9.64746 11.4619V11.0654C9.64746 10.8193 9.56543 10.7441 9.31934 10.7441H8.92285C8.67676 10.7441 8.59473 10.8193 8.59473 11.0654V11.4619C8.59473 11.708 8.67676 11.7832 8.92285 11.7832Z"></path></svg></span>日期</th><td><time>@October 26, 2022</time></td></tr><tr class="property-row property-row-status"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesStatus"><path d="M8.75488 1.02344C8.75488 0.613281 8.41309 0.264648 8.00293 0.264648C7.59277 0.264648 7.25098 0.613281 7.25098 1.02344V3.11523C7.25098 3.51855 7.59277 3.86719 8.00293 3.86719C8.41309 3.86719 8.75488 3.51855 8.75488 3.11523V1.02344ZM3.91504 5.0293C4.20215 5.31641 4.69434 5.32324 4.97461 5.03613C5.26855 4.74902 5.26855 4.25684 4.98145 3.96973L3.53906 2.52051C3.25195 2.2334 2.7666 2.21973 2.47949 2.50684C2.19238 2.79395 2.18555 3.28613 2.47266 3.57324L3.91504 5.0293ZM10.9629 4.01758C10.6826 4.30469 10.6826 4.79688 10.9697 5.08398C11.2568 5.37109 11.749 5.36426 12.0361 5.07715L13.4854 3.62793C13.7725 3.34082 13.7725 2.84863 13.4785 2.55469C13.1982 2.27441 12.7061 2.27441 12.4189 2.56152L10.9629 4.01758ZM15.0234 8.78906C15.4336 8.78906 15.7822 8.44727 15.7822 8.03711C15.7822 7.62695 15.4336 7.28516 15.0234 7.28516H12.9385C12.5283 7.28516 12.1797 7.62695 12.1797 8.03711C12.1797 8.44727 12.5283 8.78906 12.9385 8.78906H15.0234ZM0.975586 7.28516C0.56543 7.28516 0.223633 7.62695 0.223633 8.03711C0.223633 8.44727 0.56543 8.78906 0.975586 8.78906H3.07422C3.48438 8.78906 3.83301 8.44727 3.83301 8.03711C3.83301 7.62695 3.48438 7.28516 3.07422 7.28516H0.975586ZM12.0361 10.9902C11.749 10.71 11.2568 10.71 10.9629 10.9971C10.6826 11.2842 10.6826 11.7764 10.9697 12.0635L12.4258 13.5127C12.7129 13.7998 13.2051 13.793 13.4922 13.5059C13.7793 13.2256 13.7725 12.7266 13.4854 12.4395L12.0361 10.9902ZM2.52051 12.4395C2.22656 12.7266 2.22656 13.2188 2.50684 13.5059C2.79395 13.793 3.28613 13.7998 3.57324 13.5127L5.02246 12.0703C5.31641 11.7832 5.31641 11.291 5.03613 11.0039C4.74902 10.7168 4.25684 10.71 3.96973 10.9971L2.52051 12.4395ZM8.75488 12.9658C8.75488 12.5557 8.41309 12.207 8.00293 12.207C7.59277 12.207 7.25098 12.5557 7.25098 12.9658V15.0576C7.25098 15.4609 7.59277 15.8096 8.00293 15.8096C8.41309 15.8096 8.75488 15.4609 8.75488 15.0576V12.9658Z"></path></svg></span>状态</th><td><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Done</span></td></tr></tbody></table></header><div class="page-body"><nav id="474bb856-71b4-43f3-9b91-c0cd07ce4ee5" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e12d7347-2bb7-4bb9-93c7-97bcbe8820ef">1.5 构成对比实验加强削弱概述与例题分析</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f2bd2b5c-8059-4d89-94de-7cdb695d68a6">常见支持方式</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8d9c0fd8-8281-4650-9f9e-50256d880b59">异因异果</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6de728bc-6ebe-416d-8f83-6c85d266cd23">添加/补全对比实验</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#618e3b67-1935-4f2a-b1c2-41f0c21a5e1d">例题27 (2021山东70%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#83c2c4a8-2b5e-48d8-aacc-974cae7b2054">例题28 (2017国考57%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5fcf9ca5-bd98-48c2-a392-5d5fe2768566">⭐争议例题29 (2013年联考50%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#45a25be1-51a0-4a6b-8377-d2448117effe">⭐争议例题30 (2012联考25%)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c20dfeec-bc32-4689-a319-ff9a42c6db42">常见质疑方式</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5bf2a7cd-8da1-40a1-b348-40f37c4d79f1">同因异果</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6acad3b9-8a2f-4aaa-8105-630624a70ef5">异因同果</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#70c0c41e-1523-4611-9e9c-fc006498d040">例题31 (2022国考地市级69%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#84c0b785-e1fa-4d14-9d71-09dca51a8344">例题32 (2019年河北69%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f9e1a10f-80fe-4c8c-b323-dc1cb6c23cf2">⭐例题33 (2019年下事业编35%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b19f2f59-7711-4c15-9489-bc0612d0ee86">⭐例题34 (2018年联考16%)</a></div></nav><h1 id="e12d7347-2bb7-4bb9-93c7-97bcbe8820ef" class="">1.5 构成对比实验加强削弱概述与例题分析</h1><h2 id="f2bd2b5c-8059-4d89-94de-7cdb695d68a6" class="">常见支持方式</h2><p id="126732b4-0e30-4407-865d-f1d49b21522e" class="">选项为对比实验归因支持或加入异因异果的对照组构成对比实验。</p><h3 id="8d9c0fd8-8281-4650-9f9e-50256d880b59" class="">异因异果</h3><table id="a2409a67-b507-46d5-a5ef-b83f06bcda58" class="simple-table"><tbody><tr id="51b63b22-6c9d-4c4b-9687-d73c3a967912"><td id="J\?B" class="">四海</td><td id="pEl&lt;" class="">五湖</td></tr><tr id="7437053e-1c68-430b-9c6e-91024740a825"><td id="J\?B" class="">上岸</td><td id="pEl&lt;" class="">不上岸</td></tr></tbody></table><h3 id="6de728bc-6ebe-416d-8f83-6c85d266cd23" class="">添加/补全对比实验</h3><p id="d49bbb03-70c8-42a8-ab1a-92b26830c521" class=""><code>题干没有完整的对比实验，通过选项构成完整的</code></p><h3 id="618e3b67-1935-4f2a-b1c2-41f0c21a5e1d" class="">例题27 (2021山东70%)</h3><p id="5aee4a34-879b-43c6-b06b-61dd2abb7186" class="">环境与生活方式能使<code>基因表达发生改变</code>,但不涉及DNA序列的变化,研究人员发现,喝茶也能让人发生这种变化,但其作用仅限于女性。研究结果显示,经常喝茶的女性的确也<code>出现了基因表达改变</code>的现象,并且不少变异的基因与癌症和雌激素水平有关。
+以下哪项如果为真,最能支持上述结论:
+<code>A</code>.不饮茶的女性较少出现基因表达改变的情况
+B.女性经常喝茶能减少炎症的发生
+C.常饮茶和常饮咖啡的女性激素水平有较大差异
+D.女性和男性体内含有的激素水平不同</p><p id="e50aed9e-6b83-4681-8e90-197696bd93d0" class=""><code>构成了异因异果，表示支持</code></p><p id="f80adc31-04ca-43e2-bdea-96194a3e70c8" class=""><code>异因异果：四个圈</code></p><h3 id="83c2c4a8-2b5e-48d8-aacc-974cae7b2054" class="">例题28 (2017国考57%)</h3><p id="2ee8903e-e287-494d-b845-9419e268214a" class="">阿尔茨海默病是一种较为严重的疾病,4号基因突变曾被认为是阿尔茨海默病的一项致病因素,但近期有科学家提出导致这一复杂疾病的病因可能简单,就是一些能引起脑部感染的微生物,如HSV-1病毒。
+以下哪项如果为真,最能支持上述科学家的观点:
+A.当大鼠脑部受到HSV-1感染时,携带4号突变基因的大鼠产生的病毒DNA是正常大鼠的14倍
+<code>B</code>.携带4号突变基因同时感染了HSV-1病毒的人群擢患阿尔茨海默病的概率会比单独具有此类突变基因的群体高2倍
+C.有些携带4号突变基因的患者使用抗病毒药物治疗后,其病情有所好转
+D.在一些健康老年人的大脑中也存在着HSV-1病毒</p><table id="3e19b5a4-2d07-43c4-8e5a-fd9a5985d8fd" class="simple-table"><tbody><tr id="c9cb4c9c-9635-4c60-a81a-e7732ad6aa66"><td id="BauX" class="" style="width:349px">突变基因&amp;感染HSV</td><td id="tQHo" class="" style="width:349px">突变基因</td></tr><tr id="18298174-4b04-4c87-83e6-262ba78bf925"><td id="BauX" class="" style="width:349px">老年痴呆概率高</td><td id="tQHo" class="" style="width:349px">概率低</td></tr></tbody></table><h3 id="5fcf9ca5-bd98-48c2-a392-5d5fe2768566" class="">⭐争议例题29 (2013年联考50%)</h3><p id="10eca67a-4aa4-4292-8448-57026246e47f" class="">科学家们认为,梦是大脑中主管人体各种功能的各个中心点联合作用的结果。人在睡眠时其部分脑细胞仍然在活动着,这就是梦的基础。最近的研究成果证实,做梦不仅不会影响人的睡眠和健康,而且还是保护大脑健康所必需的生理活动之一。
+以下哪项如果为真,最能支持以上述结论:
+<code>A</code>.根据问卷分析,长期不做梦的人比经常做梦者所需的睡眠时间更长,在休息后有一半人仍会感到疲倦
+B.实验中研究人员在睡眠者出现做梦的脑电波时,就立即将其阻断,结果发现被试者的血压和体温明显增高 <code>分组是做梦被打断</code>
+C.研究中,梦境被打扰的被试者在醒来后显得焦虑不安,容易紧张,并出现记忆的短期障碍 <code>分组是做梦被打扰</code>
+D.调查显示,能完整讲述梦境的被试者相比遗忘梦境者,在工作中更能快速集中注意力,从而工作效率更高 <code>分组是记住与记不住</code></p><table id="e800e932-c6a5-4bb7-9f1a-0e741567001c" class="simple-table"><tbody><tr id="e0461c11-8573-44c6-a0bf-90e7eb809ab0"><td id="cW_I" class="" style="width:339px">不做梦</td><td id="ZE_h" class="" style="width:339px">做梦</td></tr><tr id="b3b1bfb4-b9d4-4e06-9f0f-0f6d4d60cb04"><td id="cW_I" class="" style="width:339px">时间长、易疲倦</td><td id="ZE_h" class="" style="width:339px">时间短、精力好</td></tr></tbody></table><h3 id="45a25be1-51a0-4a6b-8377-d2448117effe" class="">⭐争议例题30 (2012联考25%)</h3><p id="6eb0f36b-b931-4a1e-bea9-8ec248fded41" class="">他们开始对苹果iPad用户类似重复性劳损的病症进行治疗,这类被戏称为“i伤害”的病症,主要表现为用户的手和点击、触摸屏幕的手指出现各种各样的病痛。专家推测:大多数iPad用户左手拿着平板电脑以保持其稳定,右手食指点击屏幕发送邮件或生成文件。这使得他们有患上诸如重复性劳损、腕管综合症以及其他肌腱伤害的风险。
+如果以下各项为真,最能支持上述专家推测的是:
+A.使用iPad的用户患上此类病症的概率比较高 <code>支持了既成事实</code>
+B.使用其他品牌平板电 脑的用户出现了类似病症 <code>不知道是不是知识导致得病</code>
+C.未普及iPad的地区此类病症出现的比率极少 <code>与A同质</code>
+<code>D</code>.使用台式机的用户患上此类病症的概率比较低 <code>构成对比实验进行支持</code></p><table id="5e62856e-5dcf-4a9e-ad3d-60c461e7c68a" class="simple-table"><tbody><tr id="c9102765-3167-4ec3-9b22-c1067b5c1972"><td id="yc@&lt;" class="" style="width:349px">使用iPad（因）</td><td id="eDu&gt;" class="" style="width:349px">使用台式机</td></tr><tr id="a5eaba42-ad0a-4b0b-abe5-7ef49fe57017"><td id="yc@&lt;" class="" style="width:349px">疾病（果）</td><td id="eDu&gt;" class="" style="width:349px">不得病</td></tr></tbody></table><h2 id="c20dfeec-bc32-4689-a319-ff9a42c6db42" class="">常见质疑方式</h2><p id="8084bd19-3e6a-48aa-a145-df762e97c679" class="">加入同因异果、异因同果对照组</p><div id="2e475739-2c61-4b88-8d06-4dfa0149a805" class="column-list"><div id="5d698e51-59db-4192-82be-20cc44c05ba9" style="width:100%" class="column"><h3 id="5bf2a7cd-8da1-40a1-b348-40f37c4d79f1" class="">同因异果</h3></div><div id="c97bf3e3-8edf-4c24-887b-09f30a1fe012" style="width:81.24999999999999%" class="column"><h3 id="6acad3b9-8a2f-4aaa-8105-630624a70ef5" class="">异因同果</h3></div></div><div id="7a74711c-75fc-481f-89be-b3a1d71e89dd" class="column-list"><div id="f5493348-3dfe-4222-bda4-ab64200b718d" style="width:100%" class="column"><table id="7e2d291f-7940-4bea-9581-89f00697a73f" class="simple-table"><tbody><tr id="a4373851-f7a3-400a-a31b-b9c9bafae2d3"><td id="ZkC=" class="">四海</td><td id="{f]h" class="">四海</td></tr><tr id="e65e9102-b5f5-4b1d-9621-e05c857898f9"><td id="ZkC=" class="">上岸</td><td id="{f]h" class="">不上岸</td></tr></tbody></table></div><div id="b991cd68-8b83-4115-ac6d-9a9bba5252e9" style="width:100%" class="column"><table id="0be0aad0-4761-4f56-ac71-0022b4a39b51" class="simple-table"><tbody><tr id="765cff52-c267-4b44-85dc-538962315093"><td id="g^BG" class="">四海</td><td id="gbuP" class="">五湖</td></tr><tr id="bf5eca06-0df0-48eb-881f-952bd446deda"><td id="g^BG" class="">上岸</td><td id="gbuP" class="">上岸</td></tr></tbody></table></div></div><h3 id="70c0c41e-1523-4611-9e9c-fc006498d040" class="">例题31 (2022国考地市级69%)</h3><p id="3e82c529-e28a-44ae-94c9-9f8ce62168bd" class="">一家全国连锁珠宝店的H分店,去年在当地投放大量电梯促销广告。广告投放后,客流量激增,净利润和前一年同期相比增长了30%。可见电梯促销广告对于<code>提高企业利润</code>十分有效。
+假设G、M、R、S是与H分店规模、位置等具有可比性的其他4家分店,则下列最能削弱上述论证的是
+A. G分店,去年没有投放电梯广告,利润比H分店更高 <code>说的是利润高，不一定提高了，不一定利润增长了</code>
+B. M分店,去年选择投放了报纸广告,<code>销售额</code>同比提升了30%
+C. R分店,去年投放大量电梯广告,<code>销售额</code>却比H分店低
+<code>D</code>. S分店,去年投放大量电梯广告,利润同比下降了10%</p><table id="1e962170-973c-46ce-b1aa-cf2c5fe4049f" class="simple-table"><tbody><tr id="a14737b5-a1e1-4c4e-9d2a-4d21b93a07a5"><td id="dl~u" class="" style="width:349px">投放电梯广告</td><td id="N@XK" class="" style="width:349px">投放电梯广告</td></tr><tr id="ce6aa490-b2f1-4b54-a8c3-c2d372f0f4dd"><td id="dl~u" class="" style="width:349px">利润增长30%</td><td id="N@XK" class="" style="width:349px">利润下降10%</td></tr></tbody></table><h3 id="84c0b785-e1fa-4d14-9d71-09dca51a8344" class="">例题32 (2019年河北69%)</h3><p id="397263f3-3ec3-492c-b842-b9f20f49f9dc" class="">今年“五一”期间,某品牌服装店进行促销活动,根据顾客身份证上的出生年份打折,如1986年出生的,打86折,1999年及以后出生的统一打99折。该活动由于宣传到位,备货充足,顾客盈门,“五一”假期<code>销售额</code>同比增长40%。该服装店老板认为此次<code>促销活动非常成功</code>。
+以下哪项如果为真,最能反驳该服装店老板的结论:
+A. 1986年到1996年出生的顾客占比超过80%
+B.今年“五一”假期全国服装销售额同比增长45% <code>有点质疑，但说的是全国，关系不紧密</code>
+C.今年“五一”假期比去年多一天,消费者有更多的购物时间 <code>是他因，但力度不大</code>
+<code>D</code>.另一个街区该品牌服装店没有促销活动, “五一”假期销售额也增长了40%</p><h3 id="f9e1a10f-80fe-4c8c-b323-dc1cb6c23cf2" class="">⭐例题33 (2019年下事业编35%)</h3><p id="5e43b60b-f9bd-4937-b177-7493b78acb69" class="">厌学是低龄学生中常见的一种现象。一份调查报告显示,850名被调查<code>有厌学情绪</code>的低龄学生中,有511名在最近4个学期成绩呈持续下降趋势。因此,研究者认为，<code>厌学的学生成绩会持续下降</code>,这是因为其<code>厌学情绪会导致旷课、逃学</code>等现象,对教师和家长也会产生逆反心理和抵触情绪。以下哪项如果为真,最能削弱上述研究者的结论:
+A.大多数低龄学生都有厌学情绪
+B.逃学导致低龄学生产生厌学情绪 <code>攻击的是分析过程，并没有攻击厌学情绪这个原因
+如果改成：成绩下降导致低龄学生产生厌学情绪，就变为因果倒置</code>
+<code>C</code>.随着课程难度不断增加,大部分低龄学生成绩都会持续下降 <code>异因同果+另有他因，不一定是厌学导致的</code>
+D.低龄学生的逆反心理和抵触情绪是厌学情绪的主要表现</p><table id="a36da6bc-9749-4a1d-baa5-aa7663ae1fe1" class="simple-table"><tbody><tr id="ce914e5a-df80-436b-ba06-162f75b34212"><td id="V=jz" class="" style="width:349px">有厌学情绪（因）</td><td id="DdIs" class="" style="width:349px">没有厌学情绪</td></tr><tr id="7d1cbf0c-25bd-43ff-a977-d129dbfe7af2"><td id="V=jz" class="" style="width:349px">大部分成绩下降（果）</td><td id="DdIs" class="" style="width:349px">大部分也下降</td></tr></tbody></table><h3 id="b19f2f59-7711-4c15-9489-bc0612d0ee86" class="">⭐例题34 (2018年联考16%)</h3><p id="db65651e-c091-4654-871c-0ae8f68a57fb" class=""> 某研究团队让两批测试者分别进入睡眠实验室里睡上一夜。第一批被安排睡得很晚,从而减少总睡眠时间;第二批被安排睡得早,但在睡眠过程中多次被吵醒。第二晚过后,结果就已经显现:第二批测试者的积极情绪受到严重影响。他们的精力水平较低,同情心和友善度等积极情绪指数有所下滑。部分研究者据此认为,<code>被吵醒</code>导致了测试者<code>无法得到足够的慢波睡眠</code>,而慢波睡眠是恢复精力感的关键,但也有研究者对此项研究的<code>可信度</code>提出质疑。
+以下哪项如果为真,最能<code>反驳质疑者</code>:
+<code>A</code>.第一批测试者积极情绪的指数下滑程度不太明显
+B.第二批测试者中大部分人长期以来情绪不够积极 <code>看的是下降量，和初期值无关</code>
+C.两批测试者的健康状况和心理素质原本就很接近 <code>接不接近无所谓，看的是下滑量</code>
+D.两批测试者在参与睡眠实验前精力水平参差不齐 </p><table id="0545c649-2368-4be0-8803-f66a2616c114" class="simple-table"><tbody><tr id="606cfbce-a322-49c0-b642-63270cc22396"><td id="m;r|" class="" style="width:349px">睡得少</td><td id="lbRl" class="" style="width:349px">总吵醒（被吵醒更影响睡眠质量）</td></tr><tr id="926bd788-bc04-4d15-b26f-3ad92f9ca1ca"><td id="m;r|" class="" style="width:349px"></td><td id="lbRl" class="" style="width:349px"></td></tr><tr id="8cd4ccd2-2e94-4dd8-b64b-4d683084f111"><td id="m;r|" class="" style="width:349px">没有结果，加上A就完整了</td><td id="lbRl" class="" style="width:349px">情绪受到严重影响</td></tr></tbody></table></div></article></body></html>

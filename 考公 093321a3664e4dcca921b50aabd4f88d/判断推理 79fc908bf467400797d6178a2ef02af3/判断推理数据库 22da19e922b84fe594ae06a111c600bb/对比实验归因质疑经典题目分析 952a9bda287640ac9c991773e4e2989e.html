@@ -1,0 +1,753 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>对比实验归因质疑经典题目分析</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="952a9bda-2876-40ac-9c99-1773e4e2989e" class="page serif"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/rijksmuseum_mignons_1660.jpg" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="https://www.notion.so/icons/die3_green.svg"/></div><h1 class="page-title">对比实验归因质疑经典题目分析</h1><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>标签</th><td><span class="selected-value select-value-color-purple">归因论证</span><span class="selected-value select-value-color-yellow">论证类</span></td></tr><tr class="property-row property-row-date"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesDate"><path d="M3.29688 14.4561H12.7031C14.1797 14.4561 14.9453 13.6904 14.9453 12.2344V3.91504C14.9453 2.45215 14.1797 1.69336 12.7031 1.69336H3.29688C1.82031 1.69336 1.05469 2.45215 1.05469 3.91504V12.2344C1.05469 13.6973 1.82031 14.4561 3.29688 14.4561ZM3.27637 13.1162C2.70898 13.1162 2.39453 12.8154 2.39453 12.2207V5.9043C2.39453 5.30273 2.70898 5.00879 3.27637 5.00879H12.71C13.2842 5.00879 13.6055 5.30273 13.6055 5.9043V12.2207C13.6055 12.8154 13.2842 13.1162 12.71 13.1162H3.27637ZM6.68066 7.38086H7.08398C7.33008 7.38086 7.41211 7.30566 7.41211 7.05957V6.66309C7.41211 6.41699 7.33008 6.3418 7.08398 6.3418H6.68066C6.44141 6.3418 6.35938 6.41699 6.35938 6.66309V7.05957C6.35938 7.30566 6.44141 7.38086 6.68066 7.38086ZM8.92285 7.38086H9.31934C9.56543 7.38086 9.64746 7.30566 9.64746 7.05957V6.66309C9.64746 6.41699 9.56543 6.3418 9.31934 6.3418H8.92285C8.67676 6.3418 8.59473 6.41699 8.59473 6.66309V7.05957C8.59473 7.30566 8.67676 7.38086 8.92285 7.38086ZM11.1582 7.38086H11.5547C11.8008 7.38086 11.8828 7.30566 11.8828 7.05957V6.66309C11.8828 6.41699 11.8008 6.3418 11.5547 6.3418H11.1582C10.9121 6.3418 10.8301 6.41699 10.8301 6.66309V7.05957C10.8301 7.30566 10.9121 7.38086 11.1582 7.38086ZM4.44531 9.58203H4.84863C5.09473 9.58203 5.17676 9.50684 5.17676 9.26074V8.86426C5.17676 8.61816 5.09473 8.54297 4.84863 8.54297H4.44531C4.20605 8.54297 4.12402 8.61816 4.12402 8.86426V9.26074C4.12402 9.50684 4.20605 9.58203 4.44531 9.58203ZM6.68066 9.58203H7.08398C7.33008 9.58203 7.41211 9.50684 7.41211 9.26074V8.86426C7.41211 8.61816 7.33008 8.54297 7.08398 8.54297H6.68066C6.44141 8.54297 6.35938 8.61816 6.35938 8.86426V9.26074C6.35938 9.50684 6.44141 9.58203 6.68066 9.58203ZM8.92285 9.58203H9.31934C9.56543 9.58203 9.64746 9.50684 9.64746 9.26074V8.86426C9.64746 8.61816 9.56543 8.54297 9.31934 8.54297H8.92285C8.67676 8.54297 8.59473 8.61816 8.59473 8.86426V9.26074C8.59473 9.50684 8.67676 9.58203 8.92285 9.58203ZM11.1582 9.58203H11.5547C11.8008 9.58203 11.8828 9.50684 11.8828 9.26074V8.86426C11.8828 8.61816 11.8008 8.54297 11.5547 8.54297H11.1582C10.9121 8.54297 10.8301 8.61816 10.8301 8.86426V9.26074C10.8301 9.50684 10.9121 9.58203 11.1582 9.58203ZM4.44531 11.7832H4.84863C5.09473 11.7832 5.17676 11.708 5.17676 11.4619V11.0654C5.17676 10.8193 5.09473 10.7441 4.84863 10.7441H4.44531C4.20605 10.7441 4.12402 10.8193 4.12402 11.0654V11.4619C4.12402 11.708 4.20605 11.7832 4.44531 11.7832ZM6.68066 11.7832H7.08398C7.33008 11.7832 7.41211 11.708 7.41211 11.4619V11.0654C7.41211 10.8193 7.33008 10.7441 7.08398 10.7441H6.68066C6.44141 10.7441 6.35938 10.8193 6.35938 11.0654V11.4619C6.35938 11.708 6.44141 11.7832 6.68066 11.7832ZM8.92285 11.7832H9.31934C9.56543 11.7832 9.64746 11.708 9.64746 11.4619V11.0654C9.64746 10.8193 9.56543 10.7441 9.31934 10.7441H8.92285C8.67676 10.7441 8.59473 10.8193 8.59473 11.0654V11.4619C8.59473 11.708 8.67676 11.7832 8.92285 11.7832Z"></path></svg></span>日期</th><td><time>@October 24, 2022</time></td></tr><tr class="property-row property-row-status"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesStatus"><path d="M8.75488 1.02344C8.75488 0.613281 8.41309 0.264648 8.00293 0.264648C7.59277 0.264648 7.25098 0.613281 7.25098 1.02344V3.11523C7.25098 3.51855 7.59277 3.86719 8.00293 3.86719C8.41309 3.86719 8.75488 3.51855 8.75488 3.11523V1.02344ZM3.91504 5.0293C4.20215 5.31641 4.69434 5.32324 4.97461 5.03613C5.26855 4.74902 5.26855 4.25684 4.98145 3.96973L3.53906 2.52051C3.25195 2.2334 2.7666 2.21973 2.47949 2.50684C2.19238 2.79395 2.18555 3.28613 2.47266 3.57324L3.91504 5.0293ZM10.9629 4.01758C10.6826 4.30469 10.6826 4.79688 10.9697 5.08398C11.2568 5.37109 11.749 5.36426 12.0361 5.07715L13.4854 3.62793C13.7725 3.34082 13.7725 2.84863 13.4785 2.55469C13.1982 2.27441 12.7061 2.27441 12.4189 2.56152L10.9629 4.01758ZM15.0234 8.78906C15.4336 8.78906 15.7822 8.44727 15.7822 8.03711C15.7822 7.62695 15.4336 7.28516 15.0234 7.28516H12.9385C12.5283 7.28516 12.1797 7.62695 12.1797 8.03711C12.1797 8.44727 12.5283 8.78906 12.9385 8.78906H15.0234ZM0.975586 7.28516C0.56543 7.28516 0.223633 7.62695 0.223633 8.03711C0.223633 8.44727 0.56543 8.78906 0.975586 8.78906H3.07422C3.48438 8.78906 3.83301 8.44727 3.83301 8.03711C3.83301 7.62695 3.48438 7.28516 3.07422 7.28516H0.975586ZM12.0361 10.9902C11.749 10.71 11.2568 10.71 10.9629 10.9971C10.6826 11.2842 10.6826 11.7764 10.9697 12.0635L12.4258 13.5127C12.7129 13.7998 13.2051 13.793 13.4922 13.5059C13.7793 13.2256 13.7725 12.7266 13.4854 12.4395L12.0361 10.9902ZM2.52051 12.4395C2.22656 12.7266 2.22656 13.2188 2.50684 13.5059C2.79395 13.793 3.28613 13.7998 3.57324 13.5127L5.02246 12.0703C5.31641 11.7832 5.31641 11.291 5.03613 11.0039C4.74902 10.7168 4.25684 10.71 3.96973 10.9971L2.52051 12.4395ZM8.75488 12.9658C8.75488 12.5557 8.41309 12.207 8.00293 12.207C7.59277 12.207 7.25098 12.5557 7.25098 12.9658V15.0576C7.25098 15.4609 7.59277 15.8096 8.00293 15.8096C8.41309 15.8096 8.75488 15.4609 8.75488 15.0576V12.9658Z"></path></svg></span>状态</th><td><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Done</span></td></tr></tbody></table></header><div class="page-body"><nav id="8114188e-7389-4213-95ed-10704193e349" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#cd40aba5-65d6-49ee-b937-137d9b0a122d">1.3 对比实验归因质疑经典题目分析</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8c278a42-94d2-45c3-be04-0a174bb08642">另有他因</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4eb3e912-e56e-44a7-be4f-b3d5c35abe48">例题4(2014国考)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#0aeac15c-e955-478f-a61c-f55d651d063b">例题5 (2015北京70%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20dcaf66-c075-4489-82f6-adc94a4c2587">例题6 (2018下半年四川59%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b8d63ecc-6ce2-4b30-9110-3c1a998d52f4">⭐例题7 (2019河北65%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#35f9e88b-cd71-46eb-b190-d863f6cd5e2f">⭐例题8(2018吉林49%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c4f2d0f6-03d3-4412-8027-8c1743829c1c">例题9 (2021新疆55%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8e260745-f615-477d-8b29-c4c5d9a43db4">例题10 (2016广州54%) </a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8ce88814-8b1d-44a1-8c45-6c0031ae375a">⭐例题11 (2021浙江C类52%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7f684ad7-9fab-4d9e-b458-c9497d23fbeb">例题12 (2021广东选调61%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#83a96380-97e0-4bcf-9344-194ae7f8d8f8">例题13 (2017江苏35%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#03c115f4-a12b-4245-87db-21eab17a03b3">⭐例题14 (2021下四川72%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#688324e1-a8f9-46bd-b218-ed9c0da6c30e">例题15(2020青海53%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d8a844c2-9b42-4f15-af97-524676a4fe27">例题16 (2012山东49%)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#82aed760-766d-4d0d-8b66-156928c43c0c">因果倒置</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9fc8dda9-0ec5-4de3-a030-da6364484b4d">例题17 (2016广东76%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c22c14ae-73ba-4bb3-b7e2-bbcc0d80b629">例题18 (2022广东县级60%)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ce403041-8b2f-4c60-b1f1-33f54569ad5b">例题19 (2020四川87%)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c2aeda1b-d32f-44c7-9730-25937a0c8c1b">否定此因</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#81920c5d-ac05-4099-930c-8d25d3c47bed">⭐例题20 (2020广东县级卷30%)</a></div></nav><h1 id="cd40aba5-65d6-49ee-b937-137d9b0a122d" class="">1.3 对比实验归因质疑经典题目分析</h1><h2 id="8c278a42-94d2-45c3-be04-0a174bb08642" class="">另有他因</h2><p id="0eefbed5-2ed9-4672-aa42-a36284cb0ec5" class="">可利用画图法确定分组，选项为两组间的另外不同，另有他因只需把水搅浑</p><h3 id="4eb3e912-e56e-44a7-be4f-b3d5c35abe48" class="">例题4(2014国考)</h3><p id="8a4ce52b-ec3a-4c59-92a2-eb21180a5d30" class="">研究发现,试管娶儿的出生缺陷率约为9%,自然受孕婴儿的出生缺陷率约为6.6%,这两部分婴儿的眼部缺陷比例分别为0.3%和0.2%,心脏异常比例分别为5%和3%,生殖系统缺陷的比例分别为1.5%和1%。因而可以说明,试管婴儿技术导致试管婴儿比自然受孕婴儿出生缺陷率高。
+以下哪项如果为真,最能质疑该结论:
+A.试管婴儿要经过体外受精和胚胎移植过程,人为操作都会加大受精卵受损的风险
+B.选择试管婴儿技术的父母大都有生殖系统功能异常,这些异常会<strong>令此技术失败率</strong>增加 
+C.试管婴儿在体外受精阶段可以产生很多受精卵,只有最优质的才被拣选到母体进行孕育
+<code>D</code>.试管婴儿的父母比自然受孕婴儿的父母年龄大很多,父母年龄越大,新生儿出生缺陷率越高</p><table id="43cc1bff-f6cd-440b-aff6-b5f748189f5b" class="simple-table"><tbody><tr id="80050595-12f6-4491-8b2f-628a239f1db2"><td id="&lt;rvl" class="" style="width:349px">试管婴儿（因）</td><td id="zT`s" class="" style="width:349px">自然受孕</td></tr><tr id="53c07935-60af-499b-a5e8-5b235beb4436"><td id="&lt;rvl" class="" style="width:349px">缺陷率高（果）</td><td id="zT`s" class="" style="width:349px">正常</td></tr><tr id="dab92c5b-8291-4f4d-8523-7221002a2a04"><td id="&lt;rvl" class="" style="width:349px">父母年龄大</td><td id="zT`s" class="" style="width:349px">父母年龄正常</td></tr></tbody></table><h3 id="0aeac15c-e955-478f-a61c-f55d651d063b" class="">例题5 (2015北京70%)</h3><p id="cb8ea216-ae99-460e-a903-2357b5563794" class="">研究人员对父母及其子女进行DNA测序:发现父亲的年龄与子女基因突变存在联系,高龄父亲的子女DNA存在着与孤独症、精神分裂症等有关的基因突变。因此,研究人员得出结论,男性要趁早要孩子,年纪越大,孩子的疾病风险越高。
+以下论述如果为真,最能质疑该结论的是:
+A.男性年龄越大,精子质量下降,包含基因突变片段越多
+B.受试群体中男性孤独症、精神分裂症的发病率显著高于女性 <code>选项变成男性与女性的关系，分组不正确</code>
+<code>C</code>.许多受试夫妻年龄相仿,子女的基因突变更可能来自高龄母 
+D.男性最佳育龄期晚于女性,但整个育龄期显著长于女性 <code>无关项</code></p><table id="d866d767-852c-45b0-b1b0-7ef0d6438aa7" class="simple-table"><tbody><tr id="54cc94b6-c1be-4216-ab56-0222f7772918"><td id="JV|K" class="" style="width:349px">父亲年龄大（因）</td><td id="cUEJ" class="" style="width:349px">正常</td></tr><tr id="886501db-0f76-483c-9255-1d7486b41892"><td id="JV|K" class="" style="width:349px">母亲年龄也大</td><td id="cUEJ" class="" style="width:349px">母亲也正常</td></tr><tr id="d90943b3-4f56-45a9-9894-f642bd82e12b"><td id="JV|K" class="" style="width:349px">疾病风险高（果）</td><td id="cUEJ" class="" style="width:349px">正常</td></tr></tbody></table><h3 id="20dcaf66-c075-4489-82f6-adc94a4c2587" class="">例题6 (2018下半年四川59%)</h3><p id="0d8e9c9d-dc2f-4117-9f00-9aa603099159" class="">一项调查发现,在牛奶人均消费量大的地区,癌症的发病率较高；而牛奶人均消费量少的地区,癌症发病率极低。有人据此得出结论:饮用牛奶会使癌症的发病率上升。
+以下哪项如果为真,最能质疑上述结论: 
+A.癌症发病率高的地区,其他疾病的发病率相对较低 <code>无关项</code>
+B.牛奶含钙量高,吸收好,而且睡前喝牛奶有助于睡眠 <code>无关项</code>
+C.调查中牛奶人均消费量大的地区,人口总数也相对较大 <code>人口多不能推出发病率高</code>
+<code>D</code>.牛奶人均消费量大的地区居民寿命较长,且擢患癌症的主要是中老年人</p><table id="2bae3acf-0b14-44b6-9a3d-6412ab3614fb" class="simple-table"><tbody><tr id="3878f4ff-48b1-4e83-a1c5-d6304ae2558f"><td id="^Tmd" class="" style="width:349px">牛奶人均消费最高（因）</td><td id="ormV" class="" style="width:349px">低</td></tr><tr id="a711f376-086a-4d2e-8de6-b0ae90b99609"><td id="^Tmd" class="" style="width:349px">寿命长，中老年</td><td id="ormV" class="" style="width:349px">低</td></tr><tr id="f68b9213-c2c3-4be2-8e96-f0af2d258dba"><td id="^Tmd" class="" style="width:349px">癌症率高（果）</td><td id="ormV" class="" style="width:349px">低</td></tr></tbody></table><h3 id="b8d63ecc-6ce2-4b30-9110-3c1a998d52f4" class="">⭐例题7 (2019河北65%)</h3><p id="7a1c8fe9-1317-4caa-b648-3736df5dad26" class="">某村庄南北两块小麦地里,南面的地施用了生物复合肥,北面的地则没有。收割完小麦测算后发现,南面的地亩产450公斤,北面的地亩产200公斤。由此可见,施用生物复合肥是南北两块地小麦亩产差异较大的原因。以下哪项如果为真,最能削弱上述结论:
+A.南北两块小麦地均由老杨管理 <code>支持结论</code>
+<code>B</code><strong>.</strong>南北两块儿小麦地的土壤质量不同 <code>另有他因，分组正确</code><mark class="highlight-yellow_background">
+</mark>C.村南小麦地里施用的生物复合肥已过保质期 
+D.村西小麦地也施用了该生物复合肥,亩产只有230公斤 另外做了个实验 <code>只和北比，变支持了</code></p><table id="7cd70737-95b9-476f-9798-6ea16dcb7c60" class="simple-table"><tbody><tr id="fbc21996-73b5-4d1c-98dd-3915bccef416"><td id="PQEq" class="" style="width:232.66666666666666px">南</td><td id="MkCP" class="" style="width:232.66666666666666px">北</td><td id="&lt;YC{" class="" style="width:232.66666666666666px">西</td></tr><tr id="eadaff29-a974-4129-94cb-91f91b3d0383"><td id="PQEq" class="" style="width:232.66666666666666px">复合肥（因）</td><td id="MkCP" class="" style="width:232.66666666666666px">没用</td><td id="&lt;YC{" class="" style="width:232.66666666666666px">复合肥</td></tr><tr id="a9908e22-4a7b-4827-bedb-8a89b104090a"><td id="PQEq" class="" style="width:232.66666666666666px">亩产高（果）</td><td id="MkCP" class="" style="width:232.66666666666666px">低</td><td id="&lt;YC{" class="" style="width:232.66666666666666px">230</td></tr></tbody></table><h3 id="35f9e88b-cd71-46eb-b190-d863f6cd5e2f" class="">⭐例题8(2018吉林49%)</h3><p id="d50f7e87-650b-4a28-a170-67c89a0ede6a" class="">《英国医学杂志》发表的一篇研究成果显示:吃白米饭最多的人和最少的人相比,患糖尿病的风险会增加55%。有人据此得出结论,多吃白米饭易患糖尿病。
+以下哪项如果为真,最能削弱上述结论:
+A.<mark class="highlight-yellow_background"><code>遗传等其他多种因素</code></mark>,也会增加患糖尿病风险 <code>没有分组，必须回到原实验</code>
+B.长期不吃或者少吃<code>主食</code>的人,也容易患糖尿病
+C.白米饭缺少人体每天所需的膳食纤维等营养素
+<code>D</code>.吃白米饭多的人,其他类型食物的摄入量也高</p><table id="ae06ea1c-e29c-498a-b7b4-140167a896bb" class="simple-table"><tbody><tr id="d135286e-fc9f-4a14-b21e-6ed5ca7876ab"><td id="SWu]" class="" style="width:349px">多吃米饭 （因）</td><td id=";QFj" class="" style="width:349px">不多吃</td></tr><tr id="7d577728-7cd3-4f1b-9db8-6aaa6e9343f4"><td id="SWu]" class="" style="width:349px">糖尿病（果）</td><td id=";QFj" class="" style="width:349px">正常</td></tr><tr id="4b3c661d-f2da-4d96-aa84-d403b3feb0a9"><td id="SWu]" class="" style="width:349px">其它类型食物摄入量也高</td><td id=";QFj" class="" style="width:349px">正常</td></tr></tbody></table><h3 id="c4f2d0f6-03d3-4412-8027-8c1743829c1c" class="">例题9 (2021新疆55%)</h3><p id="305ca3f0-ce2b-406a-b2b5-88f1227238a1" class="">为加强对青少年的健康监测,科学家分析了4257名青少年的数据,这些孩子在12岁、14岁和16岁的时候,戴着加速计,在至少3天的时间里跟踪他们至少10个小时并随访6年。加速计客观记录佩戴者是否正在进行轻度活动,是否正在进行中度体力活动,或者是否久坐。研究发现,在12岁、14岁和16岁时,每天每增加1个小时的久坐时间,到18岁时抑郁评分分别增加11.1%,8%,10.5%。科学家据此得出结论,青少年久坐,不运动会增加抑郁症风险。以下哪项如果为真,最能质疑上述结论:
+<code>A</code>.这些久坐的青少年大多数沉迷恐怖类游戏,对他们精神造成严重影响
+B.这些孩子中,家境不好、长期奔波兼职的青少年也会患上抑郁症
+C.这些孩子中,长期久坐的青少年最终学习成绩普遍好于同龄学生
+D.与成年人相比,经常久坐不运动的青少年所占比例事实上很低</p><h3 id="8e260745-f615-477d-8b29-c4c5d9a43db4" class="">例题10 (2016广州54%) </h3><p id="584fb73f-5dd1-46d6-8c04-8493dfa7c483" class="">丹麦的研究团队发现,多饮用含咖啡因饮料的年轻人,胆固醇指标严重超标的比例明显超过那些不饮用含咖啡因饮料的年轻人。因此,研究团队认为,饮用咖啡因将影响年轻人的身体健康。
+以下哪项如果为真,最能质疑上述结论:
+A.胆固醇指标是身体是否健康的指标之一
+<code>B</code>.常喝含咖啡因饮料的年轻人通常有暴饮暴食的饮食习惯
+C.饮食清淡的人更容易保持健康的胆固醇指标
+D.有的年轻人胆固醇超标严重,但他们从来不饮用含咖啡因的饮料</p><h3 id="8ce88814-8b1d-44a1-8c45-6c0031ae375a" class="">⭐例题11 (2021浙江C类52%)</h3><p id="68c353cb-0272-4391-bd5e-f1d163f86f74" class=""><code>1990年</code>,W市70岁以上老人骨折发生率很高,同时,70岁以上老人的死亡率也很高,因此可以得知,骨折高发导致了70岁以上老人死亡率的上升。以下哪项如果为真,最能削弱上述结论: <code>按时间对比分组</code>
+<code>A</code>. 1990年,W市正在经历战乱 <code>分组正确</code>
+B. W市很多70多岁以上的老人都是独居老人 <code>如果改成1990年，W市70岁以上老人独居率更高</code>
+C.此后十年,W市70岁以上老人的骨折率和死亡率一直很高
+D. W市60岁到65岁老人骨折发生率是70岁以上老人的2倍</p><table id="9b5a7702-2fc6-4364-a500-e3e56512cd7a" class="simple-table"><tbody><tr id="92d7f5c8-a321-4f27-b232-acca5ba822ec"><td id="&gt;_VA" class="" style="width:443px">1990</td><td id="R:rR" class="" style="width:443px">其他年份</td></tr><tr id="c19dbd20-186b-4520-b161-0c9e5453dd9e"><td id="&gt;_VA" class="" style="width:443px">70岁以上老人骨折多</td><td id="R:rR" class="" style="width:443px">正常</td></tr><tr id="6b30fd62-596e-4152-ac57-0b09258e6817"><td id="&gt;_VA" class="" style="width:443px">老人死亡率高</td><td id="R:rR" class="" style="width:443px">正常</td></tr></tbody></table><h3 id="7f684ad7-9fab-4d9e-b458-c9497d23fbeb" class="">例题12 (2021广东选调61%)</h3><p id="363e2655-6960-4c0a-94e2-9ce697202a52" class="">今年夏天,街边冷饮摊上的冰激凌普遍涨价,多款畅销产品的价格都有不同程度的上涨。有人认为,这是因为冰激凌中的中高端品种越来越多,使消费者对<strong>价格较高的冰激凌有更高的接受度</strong>,最终导致了冰激凌的市场价格普遍上涨。
+以下最能削弱上述论断的一项是:
+A.中高端品种冰激凌刺激了其他品种冰激凌的市场价格上涨  <code>支持结论</code>
+B.低价冰激凌的品种同样越来越多,并且味道也很受欢迎
+C.某家大型超市的冰激凌平均价格未出现明显上涨 <code>样本太小</code>
+<code>D</code>.厂家和经销商的经营成本、用工成本不断上涨料 <code>按时间分组</code></p><table id="395b2c91-4da0-4b32-9c54-1dcd6b87fcc4" class="simple-table"><tbody><tr id="5310751d-3512-4eb8-ab3c-74b30c8aea03"><td id="\gOK" class="" style="width:443px">以往</td><td id="NPpK" class="" style="width:443px">今年</td></tr><tr id="7650f681-ec9e-4b8b-aa3d-8e9faced5432"><td id="\gOK" class="" style="width:443px">低</td><td id="NPpK" class="" style="width:443px">价格高</td></tr><tr id="2bf33909-d449-4e88-b03d-04c4edcc8fc5"><td id="\gOK" class="" style="width:443px">接受度低</td><td id="NPpK" class="" style="width:443px">高价格提升消费者接受度</td></tr><tr id="51d2cdad-1704-48b6-8c8a-4f1ff686c9d5"><td id="\gOK" class="" style="width:443px">成本低</td><td id="NPpK" class="" style="width:443px">成本上涨</td></tr></tbody></table><h3 id="83a96380-97e0-4bcf-9344-194ae7f8d8f8" class="">例题13 (2017江苏35%)</h3><p id="d1a1d16f-b730-407e-b309-089268916160" class="">近日国外一项调查研究发现,肥胖与较差的<code>社会经济地位</code>之间存在着内在的关系,那些社会经济地位较差的人大多比较肥胖,甚至越穷越胖。研究者解释,这是因为社会经济地位较差的人更容易选择高热量低营养的快餐食品,而摄入这些食品很容易导致肥胖。
+下列哪项如果为真,最能削弱研究者的上述解释:
+A.高热量低营养食品的摄入虽是一些人的饮食习惯,但却容易造成营养不良
+B.刚富起来的人更容易沉迷于高热量食品,而有些穷人对快餐食品只能偶尔尝鲜 <code>特例不行，不代表所有的</code>
+<code>C</code>.穷人没有足够的金钱和时间去锻炼身体,富人却更有能力在身体健康上投入
+D.现在高热量低营养的快餐食品变得越来越廉价,而健康的低卡路里食品变得越来越昂贵</p><h3 id="03c115f4-a12b-4245-87db-21eab17a03b3" class="">⭐例题14 (2021下四川72%)</h3><p id="4675c16a-a05e-4093-bf18-883afb01ec95" class="">科学家对19岁以上的1524名男性和2008名女性共3532人进行了调查。结果显示,不吃早餐的男性在1年内体重增加3公斤以上的比重是吃早餐的1.9倍之多;不吃早餐的女性在1年内体重增加3公斤以上的比重是吃早餐的1.4倍之多。因此,他们得出结论:<code>如果不吃早餐</code>,无论男女,体重增加的概率都会比较高。
+以下哪项如果为真,最能削弱上述结论:
+A.不吃早餐,男女体重不一定都会增加
+<code>B</code>.男女体重增加主要是早上睡懒觉造成的
+C. 18岁以下的人群不一定会出现研究中的结果
+D.相比男性,不吃早餐对女性体重增加的影响并不大
+<code>按吃不吃早餐分组</code></p><h3 id="688324e1-a8f9-46bd-b218-ed9c0da6c30e" class="">例题15(2020青海53%)</h3><p id="a99c4be1-c129-4ba0-9014-251ec14d8ea3" class="">心理学家考察了450位中年男性和女性,他们中有白领阶层,也有蓝领阶层;有技能判断型人群,也有决策制定型人群。结果发现,<code>那些身居重要职位的高管人士</code>普遍比一般员工更胖。研究者认为,做出许多决定所承受的压力通过饮食方式得到排解,这最终在一定程度上改变了高管人士之前的饮食习惯,如果你的职位幸运地得到晋升,你将发现不仅是薪水变多,自己的腰围也在变粗,伴随着体重上升。
+以下哪项如果为真,最能质疑上述结论:
+A.比较而言,技能判断型人群腰围较小,决策制定型人群腰围较大
+<code>B</code>.比较而言,身居要职的高管人士更难抽出时间投入锻炼以缩小腰围
+C.每晋升一个工作等级,技能判断型人群的腰围平均会减少0.5厘米
+D.每晋升一个工作等级,决策制定型人群的腰围平均会增大0.28厘米</p><h3 id="d8a844c2-9b42-4f15-af97-524676a4fe27" class="">例题16 (2012山东49%)</h3><p id="f776e196-a652-448e-9e70-0d52df2d8d89" class="">某研究机构耗时9年,追踪调查6.3万健康人士的饮食习惯,包括肉的食用量、肉类烹调方式以及肉类煮熟程度等,研究小组按食用烤肉的量多少把研究对象分为5组。截止研究结束时,共有208人患上胰腺癌,他们大多集中在烤肉食用量最高的两组。因此,研究者得出<code>大量食用烤肉</code>更容易患胰腺癌。
+以下哪项为真,最能削弱上述结论:
+A.研究表明,父母若有一人患胰腺癌,子女患该病的几率将提高30%
+B.研究表示,长期食用煮食肉类和长期食用烤肉的人群相比,患胰腺癌的比例相当
+<code>C</code>.调查数据表示,<code>大量食用烤肉的人有</code>98%都喜欢一边啤酒一边吃烤肉,并且常常熬夜
+D.该研究中偏好半熟烤肉的人擢患胰腺癌的比例比偏好全熟烤肉的人高约60%</p><h2 id="82aed760-766d-4d0d-8b66-156928c43c0c" class="">因果倒置</h2><p id="88b1af66-035a-4982-ab97-5a0678deafab" class="">比较简单,本质为原因在结果之后,不能是此原因导致了结果:难题需注意时间先后顺序;因果倒置常用“<code>只有才</code>”表示时间关系,此时不考虑逻辑推出关系(充分必要),应考虑因果关系。</p><h3 id="9fc8dda9-0ec5-4de3-a030-da6364484b4d" class="">例题17 (2016广东76%)</h3><p id="a0ce5f89-2ee4-4941-9f2f-1469f4aa8b01" class="">一项研究发现:经常喝咖啡的成年人患上心脏病的概率是不常喝咖啡成年人患心脏病概率的2.5倍。由此可以判定,咖啡中的某种物质能够导致人患上心脏疾病。
+以下最能削弱上述结论的一项是:
+A.咖啡含有提高心脏活力的成分
+B.用餐时喝咖啡有降低血脂的作用
+<code>C</code>.心脏病高危人群更容易爱上喝咖啡
+D.爱喝咖啡的人大都性格开朗,喜欢运动</p><h3 id="c22c14ae-73ba-4bb3-b7e2-bbcc0d80b629" class="">例题18 (2022广东县级60%)</h3><p id="9dcd6d9d-0d15-447e-8615-df9d62a86dd3" class="">某教师收集了本班学生的语文学习兴趣、每天的学习时长等信息,结合期末考试语文成绩分析后发现,与每天语文学习时长不足2小时的学生相比,学习超过2小时的学生学习兴趣普遍更高,其语文期末考试平均分也更高。该教师由此得出结论,增加语文学习时长能够有效培养学习兴趣,进而提高语文成绩。
+下列选项若为真,最能质疑上述结论的是:
+A.该班级期末考试语文成绩最好的学生每天学习语文1小时
+B.该班级的语文期末考试平均分高于其他班级 <code>分组不正确</code>
+C.语文学习兴趣高的学生拥有更好的学习习惯 
+<code>D</code>.只有语文学习兴趣高的学生才乐于花更长时间学习语文</p><h3 id="ce403041-8b2f-4c60-b1f1-33f54569ad5b" class="">例题19 (2020四川87%)</h3><p id="065ec5dd-be4c-4990-a85f-2f5d9e79d3f5" class="">某社区近期举行了一项关于家庭饲养宠物与家庭生活幸福感关系的调查。此次调查走访了100户家庭,调查的内容包括宠物的种类、饲养宠物的时间、家庭成员的学历和职业等诸多方面。调查结果表明,饲养宠物的家庭,其家庭成员的幸福感普遍高于没有饲养宠物的家庭。这说明,家庭饲养宠物有助于提升家庭生活幸福感。
+以下哪项如果为真,最能削弱上述论证:
+A.该调查所采集样本数量不足
+B.该社区饲养宠物的通常是那些居住条件较好的居民 <code>他因质疑</code>
+C.没有饲养宠物的家庭,其家庭成员通常为工作较为繁忙的在岗职工 <code>他因质疑</code>
+<code>D</code>.家庭饲养宠物通常是因为其成员有充裕的时间并具有较高的家庭生活幸福感</p><table id="76975935-9051-45fc-bc17-a3e70c0abc48" class="simple-table"><tbody><tr id="3c5bd58e-8754-457e-bc29-220eb3f7821f"><td id="mj@V" class="" style="width:349px">养宠物</td><td id="SW|z" class="" style="width:349px">不养</td></tr><tr id="9288a85d-872f-469d-ba71-bc5e72869afd"><td id="mj@V" class="" style="width:349px">幸福感更高</td><td id="SW|z" class="" style="width:349px">一般</td></tr><tr id="b7ac0212-73a7-4388-9e71-7181aee065a4"><td id="mj@V" class="" style="width:349px">幸福感高</td><td id="SW|z" class="" style="width:349px">养宠物</td></tr></tbody></table><h2 id="c2aeda1b-d32f-44c7-9730-25937a0c8c1b" class="">否定此因</h2><p id="04a20de9-d7f1-43dc-89b8-c736d960847e" class="">不讨论真正原因是什么，只是有理由的否定此因。</p><h3 id="81920c5d-ac05-4099-930c-8d25d3c47bed" class="">⭐例题20 (2020广东县级卷30%)</h3><p id="7d987333-831c-410e-95b3-a6fbbc45aa37" class="">国内有研究发现,在小学阶段,春季出生的孩子比冬季出生的孩子学习成绩更好,在学业上获得成功的概率也更高。有人据此推测,这是由于春季出生的孩子年纪更大一些,而年纪大的孩于往往更成熟,更容易获得老师的关注。
+以下选项如果为真,最能反驳上述判断的是:
+A.得到老师更多关注并不意味着一定有更多在学业上取得成就的机会  <code>攻击的是最后的分析，没有攻击春、冬两季</code>这个原因
+<code>B</code>.教育部门规定,小学生必须在当年9月1日前年满6周岁才能入学 <code>根本没有冬季出生的</code>
+C.老师也会倾向于关注成绩不理想的学生
+D.其他研究发现,成绩好的孩子普遍善于独立思考</p><table id="ed06609e-ff23-4602-ae06-53434bf1dce6" class="simple-table"><tbody><tr id="559b95a9-6035-4f2b-9567-fabb595944ae"><td id="{qwD" class="" style="width:439.5px">春季出生</td><td id="wq^T" class="" style="width:439.5px">冬季出生</td></tr><tr id="af36a53e-6dad-446b-9d0c-65239e86c43a"><td id="{qwD" class="" style="width:439.5px">成绩好（果）</td><td id="wq^T" class="" style="width:439.5px">成绩一般</td></tr><tr id="a554c8bd-1b7d-4f7a-81be-9170d9669f8c"><td id="{qwD" class="" style="width:439.5px">年纪大、关注（因）</td><td id="wq^T" class="" style="width:439.5px">年纪小</td></tr></tbody></table><p id="0b3f00a9-2f71-4819-a435-892878424568" class="">
+</p></div></article></body></html>
